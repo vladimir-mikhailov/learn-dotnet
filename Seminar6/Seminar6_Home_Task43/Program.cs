@@ -5,41 +5,63 @@
 
 // b1 = 2, k1 = 5, b2 = 4, k2 = 9-> (-0,5; -0,5)
 
-void GetCrossPoint(double k1, double b1, double k2, double b2)
+internal class Program
 {
-  Console.WriteLine("");
-  if (k1 == k2 && b2 == b1) Console.WriteLine("Прямые полностью совпадают.");
-  else
-  if (k1 == k2) Console.WriteLine("Прямые параллельны ||");
-  else
+  private static void Main(string[] args)
   {
-    double x, y;
+    Console.Clear();
+    Console.WriteLine("y = k1 * x + b1\ny = k2 * x + b2\n");
 
-    x = (b2 - b1) / (k1 - k2);
-    y = k1 * x + b1;
-    Console.WriteLine($"Точка пересечения: X: {x:N1} Y: {y:N1}");
+    GetCrossPoint
+    (
+      k1: GetParam("k1"),
+      b1: GetParam("b1"),
+      k2: GetParam("k2"),
+      b2: GetParam("b2")
+    );
   }
-  Console.WriteLine("");
-}
 
-double GetParam(string varName)
-{
-  Console.Write($"Введите {varName}: ");
-  double num;
-  while (!double.TryParse(Console.ReadLine(), out num))
+  /// <summary>
+  /// Gets Line params from console.
+  /// </summary>
+  /// <param name="varName">Name of the variable</param>
+  /// <returns>int number</returns>
+  private static double GetParam(string varName)
   {
-    System.Console.WriteLine("Некорректное число, попробуйте ещё: ");
+    Console.Write($"Введите {varName}: ");
+    double num;
+    while (!double.TryParse(Console.ReadLine(), out num))
+    {
+      Console.WriteLine("Некорректное число, попробуйте ещё: ");
+    }
+    return num;
   }
-  return num;
+
+  /// <summary>
+  /// Defines the cross point's
+  /// coords and writes it to console.
+  /// </summary>
+  /// <param name="k1">Line1 Angle Multiplier</param>
+  /// <param name="b1">Line1 Parameter</param>
+  /// <param name="k2">Line2 Angle Multiplier</param>
+  /// <param name="b2">Line2 Parameter</param>
+  private static void GetCrossPoint(double k1,
+                                    double b1,
+                                    double k2,
+                                    double b2)
+  {
+    Console.WriteLine("");
+    if (k1 == k2 && b2 == b1) Console.WriteLine("Прямые полностью совпадают.");
+    else
+    if (k1 == k2) Console.WriteLine("Прямые параллельны ||");
+    else
+    {
+      double x, y;
+
+      x = (b2 - b1) / (k1 - k2);
+      y = k1 * x + b1;
+      Console.WriteLine($"Точка пересечения: X: {x:N1} Y: {y:N1}");
+    }
+    Console.WriteLine("");
+  }
 }
-
-Console.Clear();
-Console.WriteLine("y = k1 * x + b1\ny = k2 * x + b2\n");
-
-GetCrossPoint
-(
-  k1: GetParam("k1"),
-  b1: GetParam("b1"),
-  k2: GetParam("k2"),
-  b2: GetParam("b2")
-);

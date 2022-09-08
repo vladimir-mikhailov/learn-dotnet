@@ -4,21 +4,30 @@
 // Если N = 3 -> 0 1 1
 // Если N = 7 -> 0 1 1 2 3 5 8
 
-// Без рекурсии:
-
-int x = 0;
-int y = 1;
-int sum = 0;
-
-Console.Write("0 1 ");
-
-for (int i = 2; i < 10; i++)
+internal class Program
 {
+  /// <summary>
+  /// Gets an array of Fibonacci numbers
+  /// </summary>
+  /// <param name="size">Size of Fibonacci array</param>
+  /// <returns>int[] array</returns>
+  private static int[] getFibonacciArray(int size)
   {
-    sum = x + y;
-    Console.Write($"{sum} ");
-    x = y;
-    y = sum;
+    int[] arr = new int[size];
+    if (size >= 1) arr[0] = 0;
+    if (size >= 2) arr[1] = 1;
+
+    for (int i = 2; i < size; i++)
+    {
+      arr[i] = arr[i - 1] + arr[i - 2];
+    }
+
+    return arr;
+  }
+
+  private static void Main(string[] args)
+  {
+    Console.Write(string.Join(", ", getFibonacciArray(10)));
   }
 }
 
