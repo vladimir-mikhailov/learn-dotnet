@@ -9,7 +9,7 @@ double[] GetNumbers()
 {
   List<double> numbersList = new List<double>();
 
-  do
+  while (true)
   {
     string input = Console.ReadLine();
 
@@ -25,7 +25,7 @@ double[] GetNumbers()
     {
       numbersList.Add(Convert.ToDouble(input));
     }
-  } while (true);
+  }
 }
 
 int CountPositiveNumbers(double[] arr)
