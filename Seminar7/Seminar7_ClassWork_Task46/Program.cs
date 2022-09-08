@@ -18,13 +18,20 @@ int[,] GetArray(int rows, int columns)
   return result;
 }
 
-int[,] arr = GetArray(rows, columns);
-
-for (int i = 0; i < arr.GetLength(0); i++)
+void ShowArray(int[,] arr)
 {
-  for (int j = 0; j < arr.GetLength(1); j++)
+  int rows = arr.GetLength(0);
+  int columns = arr.GetLength(1);
+
+  for (int i = 0; i < rows; i++)
   {
-    Console.Write($"{arr[i, j]} ");
+    for (int j = 0; j < columns; j++)
+    {
+      Console.Write($"{arr[i, j]} ");
+    }
+    Console.Write("\n");
   }
-  Console.Write("\n");
 }
+
+int[,] arr = GetArray(rows, columns);
+ShowArray(arr);
