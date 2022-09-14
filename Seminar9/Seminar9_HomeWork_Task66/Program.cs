@@ -14,7 +14,13 @@ int GetNumber(string what)
   return number;
 }
 
-int GetSumOfNaturalsBetween(int m, int n)
+int GetSumRec(int m, int n)
+{
+  if (m >= n) return 0;
+  return m + n + GetSumRec(m + 1, n - 1);
+}
+
+int GetSum(int m, int n)
 {
   int sum = 0;
 
@@ -26,17 +32,11 @@ int GetSumOfNaturalsBetween(int m, int n)
   return sum;
 }
 
-int GetSumOfNaturalsWithRecursion(int m, int n)
-{
-  if (m == n) return 0;
-  return m + n + GetSumOfNaturalsWithRecursion(m + 1, n - 1);
-}
-
 Console.WriteLine("");
 int m = GetNumber("m");
 int n = GetNumber("n");
 
 Console.WriteLine("");
-Console.WriteLine($"Сумма натуральных чисел между ними равна: {GetSumOfNaturalsBetween(m, n)}");
-Console.WriteLine($"А если через рекурсию, то: {GetSumOfNaturalsBetween(m, n)}");
+Console.WriteLine($"Сумма натуральных чисел между ними равна: {GetSum(m, n)}");
+Console.WriteLine($"А если посчитать через рекурсию, то:      {GetSumRec(m, n)}");
 Console.WriteLine("");

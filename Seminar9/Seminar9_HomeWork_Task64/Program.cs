@@ -15,7 +15,13 @@ int GetNumber(string what)
   return number;
 }
 
-int[] GetNaturalsBetween(int m, int n)
+string GetNaturalsRec(int m, int n)
+{
+  if (m == n) return Convert.ToString(n);
+  return m + ", " + GetNaturalsRec(m + 1, n);
+}
+
+int[] GetNaturals(int m, int n)
 {
   int size = n - m + 1;
   int[] arr = new int[size];
@@ -29,18 +35,12 @@ int[] GetNaturalsBetween(int m, int n)
   return arr;
 }
 
-string GetNaturalsBetweenWithRecursion(int m, int n)
-{
-  if (m == n) return Convert.ToString(n);
-  return m + ", " + GetNaturalsBetweenWithRecursion(m + 1, n);
-}
-
 Console.WriteLine("");
 int m = GetNumber("m");
 int n = GetNumber("n");
 
 Console.WriteLine("");
-Console.WriteLine($"{"Натуральные числа от m до n:".PadRight(35)} [ {string.Join(", ", GetNaturalsBetween(m, n))} ]");
+Console.WriteLine($"{"Натуральные числа от m до n:".PadRight(35)} [ {string.Join(", ", GetNaturals(m, n))} ]");
 Console.WriteLine("");
-Console.WriteLine($"{"А теперь с рекурсией:".PadRight(35)} [ {GetNaturalsBetweenWithRecursion(m, n)} ]");
+Console.WriteLine($"{"А теперь с рекурсией:".PadRight(35)} [ {GetNaturalsRec(m, n)} ]");
 Console.WriteLine("");
