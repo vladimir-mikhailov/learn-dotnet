@@ -5,16 +5,19 @@
 // !! В примере задачи ошибка: m и n перепутаны местами. A(2, 3) = 9; A (3, 2) =  29;
 // https://ru.wikipedia.org/wiki/Функция_Аккермана#Таблица_значений
 
-int Ankerman(int m, int n)
+int Akkerman(int m, int n)
 {
+  if (m < 0 || n < 0)
+  {
+    System.Console.WriteLine("Ошибка: функция Аккермана принимает только целые неотрицательные числа.");
+    return -1;
+  }
 
   if (m == 0) return n + 1;
 
-  if (m > 0 && n == 0) return Ankerman(m - 1, 1);
+  if (n == 0) return Akkerman(m - 1, 1);
 
-  if (m > 0 && n > 0) return Ankerman(m - 1, Ankerman(m, n - 1));
-
-  return 0;
+  return Akkerman(m - 1, Akkerman(m, n - 1));
 }
 
 int GetNumber(string what)
@@ -28,9 +31,12 @@ int GetNumber(string what)
   return number;
 }
 
+Console.WriteLine("");
 int m = GetNumber("m");
 int n = GetNumber("n");
 
 // !! В примере задачи ошибка: m и n перепутаны местами. A(2, 3) = 9; A (3, 2) =  29;
 // https://ru.wikipedia.org/wiki/Функция_Аккермана#Таблица_значений
-Console.WriteLine($"A({m}, {n}) = {Ankerman(m, n)}");
+Console.WriteLine("");
+Console.WriteLine($"A({m}, {n}) = {((Akkerman(m, n) > 0) ? Akkerman(m, n) : "так эта штука не работает")}");
+Console.WriteLine("");

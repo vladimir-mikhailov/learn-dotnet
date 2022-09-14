@@ -35,7 +35,6 @@ string GetNaturalsBetweenWithRecursion(int m, int n)
   return m + ", " + GetNaturalsBetweenWithRecursion(m + 1, n);
 }
 
-
 Console.WriteLine("");
 int m = GetNumber("m");
 int n = GetNumber("n");
