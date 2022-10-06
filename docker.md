@@ -2,7 +2,7 @@
 
 ## Build custom image
 
-`docker image build -t dotnet-custom`
+`docker image build -t dotnet-custom .`
 
 ---
 
