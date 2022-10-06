@@ -1,5 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 as Development
-RUN apt-get update && apt-get install -y nano
+RUN apt-get update && apt-get install -y nano \
+  && rm -rf /var/lib/apt/lists/*
 RUN useradd -m vladimir
 USER vladimir
 WORKDIR /home/vladimir

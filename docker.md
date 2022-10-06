@@ -1,10 +1,16 @@
 # .NET Development in Docker Container
 
+## Build custom image
+
+`docker image build -t dotnet-custom`
+
+---
+
 ## Run image
 
 Make a directory for your app: `mkdir myapp && cd myapp`
 
-Run Docker container from official image:
+Run Docker container:
 
 ```bash
 docker run -it --rm\
@@ -22,9 +28,7 @@ docker run -it --rm\
 - Specify container's WORKDIR: `-w /app`.
 - Use official Microsoft .NET SDK image: `mcr.microsoft.com/dotnet/sdk:6.0` or custom image: `dotnet-custom`.
 
-From custom image:
-
-`docker run --name my-dotnet-app -it --rm -v $(pwd):/${PWD##*/} -w /${PWD##*/} dotnet-app`
+---
 
 ## Remove .NET locally
 
