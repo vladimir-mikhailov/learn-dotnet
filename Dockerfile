@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0 as Development
+FROM mcr.microsoft.com/dotnet/sdk:7.0 as Development
 RUN apt-get update && apt-get install -y \
   nano \
   ssh \
